@@ -1,0 +1,12 @@
+.home_container
+{
+    width: 100%;
+    margin: 0 auto;
+}
+@media (min-width: 1300px) {
+
+    .home_container {
+        width: 1300px;
+        margin: 0 auto;
+    }
+}
