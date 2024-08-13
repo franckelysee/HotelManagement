@@ -59,7 +59,10 @@
                             </div>
 
                             <div class="hotel_btn_reserver">
-                                <a href="#" class="btn bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">Réserver</a>
+                                <a href="{{ route('hotel-search', ['start_date' => $start_date, 'end_date' => $end_date, 'destination' => $destination,'adults' => $adults, 'children' => $children, 'regionId' => $regionId]) }}"
+                                    class="btn bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">
+                                    Parcourir
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -97,7 +100,7 @@
                             </div>
                             <div class="hotel_price flex justify-between items-center">
                                 <div>
-                                    <span class="text-[20px] text-[#273add] font-medium " style="letter-spacing: 2px;">500€</span>
+                                    <span class="text-[20px] text-[#273add] font-medium " style="letter-spacing => 2px;">500€</span>
                                     <span class="text-[12px] font-bold">/ par nuit</span>
                                 </div>
                                 <span class="text-[14px] capitalize">taxe et frais compris</span>
@@ -141,7 +144,7 @@
                             </div>
                             <div class="hotel_price flex justify-between items-center">
                                 <div>
-                                    <span class="text-[20px] text-[#273add] font-medium " style="letter-spacing: 2px;">500€</span>
+                                    <span class="text-[20px] text-[#273add] font-medium " style="letter-spacing => 2px;">500€</span>
                                     <span class="text-[12px] font-bold">/ par nuit</span>
                                 </div>
                                 <span class="text-[14px] capitalize">taxe et frais compris</span>

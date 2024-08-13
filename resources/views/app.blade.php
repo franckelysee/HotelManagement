@@ -7,7 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    @yield('styles')
     @vite("resources/css/app.css")
 </head>
 <body class="relative">
@@ -15,7 +16,7 @@
     <div class="header w-full  sticky top-0 z-10">
         @include('layouts.header')
     </div>
-    <main class=" m-auto w-full">
+    <main class=" m-auto ">
         @yield('content')
     </main>
 

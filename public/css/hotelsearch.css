@@ -1,0 +1,58 @@
+.filterItem{
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.filterItem:hover{
+    cursor: pointer;
+    background-color: #b7d8f8;
+    border-color: #b7d8f8;
+}
+
+.filterItem.active {
+    cursor: pointer;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+
+/* zone de la pages reservation */
+.menuItem{
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.menuItem.active, .menuItem.active:hover{
+    cursor: pointer;
+    color: #1668e3;
+    border-bottom:2px solid #1668e3;
+}
+.menuItem:hover {
+    cursor: pointer;
+    color: #000000;
+    border-bottom: 2px solid #121213;
+}
+.filter_roomItem
+{
+    width: max-content;
+    border-radius: 25px;
+}
+.filter_roomItem.active {
+    background-color: #5a8cbe57;
+    border-color: #02213f;
+}

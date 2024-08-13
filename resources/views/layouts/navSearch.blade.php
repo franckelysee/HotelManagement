@@ -42,7 +42,6 @@
                             <button class="w-[30%] bg-[rgb(16,76,151)] text-white rounded-[5px] px-4 text-[13px]" type="submit">Trouver un hotel</button>
                         </div>
                     </div>
-                    <DatePicker/>
                 </div>
             </div>
         </form>
