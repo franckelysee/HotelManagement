@@ -13,13 +13,13 @@
                 <div class="hotel_imagebanner w-full">
                     <div class="image_container w-full flex gap-1 h-[300px] ">
                         <div class="main_image w-[50%] border">
-                            <img class="w-full h-full" src="{{ asset('images/hotels/hotel1.png') }}" alt="">
+                            <img class="w-full h-full" src="{{ asset('images/hotels/hotel2.png') }}" alt="">
                         </div>
                         <div class="additionnal_images flex flex-wrap w-[50%] gap-1 h-full  ">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/hotel2.png') }}" alt="">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/hotel3.png') }}" alt="">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/hotel4.png') }}" alt="">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/hotel5.png') }}" alt="">
+                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre2.png') }}" alt="">
+                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre3.png') }}" alt="">
+                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre4.png') }}" alt="">
+                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre5.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -28,27 +28,21 @@
                     <div class="w-full">
                         <div class="menu_hotel_informations w-full border-b ">
                             <div class="w-[max-content] menu_list flex gap-3">
-                                <div class="menuItem active" data-id = "presentation">
+                                <a href="#presentation" class="menuItem active" data-id = "presentation">
                                     <span>Présentation</span>
-                                </div>
-                                <div class="menuItem" data-id = "equipements">
+                                </a>
+                                <a href="#equipements" class="menuItem" data-id = "equipements">
                                     <span>Équipements</span>
-                                </div>
-                                <div class="menuItem" data-id = "chambres">
+                                </a>
+                                <a href="#chambres" class="menuItem" data-id = "chambres">
                                     <span>Chambres</span>
-                                </div>
-                                <div class="menuItem" data-id = "accessibilité">
-                                    <span>Accessibilité</span>
-                                </div>
-                                <div class="menuItem" data-id = "conditions">
-                                    <span>Conditions</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
                         <div class="w-full ">
                             <div class="hotels_info p-3 flex flex-col gap-3">
-                                <div id="presentation" class="w-full flex flex-col gap-3">
+                                <div id="presentation" class="w-full flex flex-col gap-3 pt-20">
                                     <div class="w-full flex gap-1 text-[14px] items-center" >
                                         <span class="hotel_type_for_vip bg-black text-white  p-1 rounded-[5px]">VIP Access</span>
                                         <span class="hotel_type_hote"> Hôtel Professionnel</span>
@@ -87,7 +81,7 @@
                                     </div>
                                 </div>
 
-                                <div id="equipements" class="w-full flex flex-col gap-3">
+                                <div id="equipements" class="w-full flex flex-col gap-3 pt-20">
                                     <span class="title font-medium text-[18px]">Équipements populaires de l'hotel</span>
                                     <div class="w-full flex flex-col gap-2">
                                         <div class="liste_equipements w-[50%] grid grid-cols-2 gap-3 text-[14px]">
@@ -153,7 +147,7 @@
                                     </div>
                                 </div>
 
-                                <div id="chambres" class="w-full flex flex-col gap-3">
+                                <div id="chambres" class="w-full flex flex-col gap-3 pt-20">
                                     <div class="w-full">
                                         <span class="text-[24px] font-medium tracking-[0.5px]">Choisissez votre chambre</span>
                                     </div>
@@ -179,9 +173,9 @@
 
                                     <div class="w-full  flex flex-wrap">
                                         @for ($i = 0; $i < 5; $i++)
-                                        <div class="hotel_item w-[33%]  flex flex-col p-5" >
-                                            <div class="w-full border rounded-[20px]">
-                                                <div class="images_container w-full  ">
+                                        <div class="hotel_item w-[33%]  flex flex-col p-5 " >
+                                            <div class="w-full border rounded-[20px] flex flex-col h-full">
+                                                <div class="images_container w-full  " style="flex: 1">
                                                     <div class="images_list flex ">
                                                         <div class="image_item w-full">
                                                             <img class="rounded-t-[20px] w-full" src="{{ asset('images/hotels/chambre' . (string)($i+1) .'.png') }}" alt="">
@@ -197,7 +191,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="hotel_info  w-full p-2 flex flex-col gap-2">
+                                                <div class="hotel_info  w-full p-2 flex flex-col gap-2 " style="flex: auto">
                                                     <div class="hotel_rating_note">
                                                         <span class="bg-[#2431ac] text-[12px] text-white p-1 ">7.5</span>
                                                         <span>Bien (152 avis)</span>
@@ -208,41 +202,10 @@
                                                             <span class="text-[14px]">Francfort</span>
                                                         </a>
                                                     </div>
-                                                    <div class="liste_equipement_service w-full py-3 text-[14px] text-[#353434] border-b border-gray-400">
-                                                        <div class="equipement_item flex items-center gap-3">
-                                                            <svg class="uitk-icon uitk-spacing uitk-spacing-padding-inlineend-two uitk-layout-flex-item size-6" aria-describedby="room-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                <desc id="room-description">Chambres communicantes disponibles</desc>
-                                                                <path fill-rule="evenodd" d="M20 19h-1V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v15H4a1 1 0 0 0-1 1 1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V6h3v14a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1 1 1 0 0 0-1-1zm-8-6h-2v-2h2v2z" clip-rule="evenodd"></path>
-                                                            </svg>
-                                                            <span>9 personnes</span>
-                                                        </div>
-                                                        <div class="equipement_item flex items-center gap-3">
-                                                            <svg class="uitk-icon uitk-spacing uitk-spacing-padding-inlineend-two uitk-layout-flex-item size-6" aria-describedby="room-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                <desc id="room-description">Chambres communicantes disponibles</desc>
-                                                                <path fill-rule="evenodd" d="M20 19h-1V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v15H4a1 1 0 0 0-1 1 1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V6h3v14a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1 1 1 0 0 0-1-1zm-8-6h-2v-2h2v2z" clip-rule="evenodd"></path>
-                                                            </svg>
-                                                            <span>Vue sur la ville</span>
-                                                        </div>
-                                                        <div class="equipement_item flex items-center gap-3">
-                                                            <svg class="uitk-icon uitk-spacing uitk-spacing-padding-inlineend-two uitk-layout-flex-item size-6" aria-describedby="room-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                <desc id="room-description">Chambres communicantes disponibles</desc>
-                                                                <path fill-rule="evenodd" d="M20 19h-1V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v15H4a1 1 0 0 0-1 1 1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V6h3v14a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1 1 1 0 0 0-1-1zm-8-6h-2v-2h2v2z" clip-rule="evenodd"></path>
-                                                            </svg>
-                                                            <span>Très grand lit</span>
-                                                        </div>
-                                                        <div class="equipement_item flex items-center gap-3">
-                                                            <svg class="uitk-icon uitk-spacing uitk-spacing-padding-inlineend-two uitk-layout-flex-item size-6" aria-describedby="room-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                <desc id="room-description">Chambres communicantes disponibles</desc>
-                                                                <path fill-rule="evenodd" d="M20 19h-1V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v15H4a1 1 0 0 0-1 1 1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V6h3v14a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1 1 1 0 0 0-1-1zm-8-6h-2v-2h2v2z" clip-rule="evenodd"></path>
-                                                            </svg>
-                                                            <span>Accès wifi gratuit</span>
-                                                        </div>
-                                                        <div class="equipement_item flex items-center gap-3">
-                                                            <svg class="uitk-icon uitk-spacing uitk-spacing-padding-inlineend-two uitk-layout-flex-item size-6" aria-describedby="room-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                <desc id="room-description">Chambres communicantes disponibles</desc>
-                                                                <path fill-rule="evenodd" d="M20 19h-1V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v15H4a1 1 0 0 0-1 1 1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V6h3v14a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1 1 1 0 0 0-1-1zm-8-6h-2v-2h2v2z" clip-rule="evenodd"></path>
-                                                            </svg>
-                                                            <span>parking sans voiturier gratuit</span>
+                                                    <div class="liste_equipement_service w-full py-3 text-[13px] text-[#2958f1e5] cursor-pointer">
+                                                        <span>Détails sur la chambres   > </span>
+                                                        <div id="liste_equipement_rooModal">
+
                                                         </div>
                                                     </div>
                                                     <div class="hotel_details_link cursor-pointer w-[max-content] flex flex-col">
@@ -265,9 +228,9 @@
                                                         <span class="text-[14px] capitalize">taxe et frais compris</span>
                                                     </div>
 
-                                                    <div class="hotel_btn_reserver">
+                                                    <div class="hotel_btn_reserver  flex w-full items-end" style="flex: 1">
                                                         <a href="{{ route('reservation', ['hotid' => $hotelid]) }}"
-                                                            class="btn bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">
+                                                            class="btn w-full bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">
                                                             reserver
                                                         </a>
                                                     </div>
