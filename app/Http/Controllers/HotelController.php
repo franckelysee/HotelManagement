@@ -40,4 +40,11 @@ class HotelController extends Controller
 
         return view('pages/reservation', compact('hotelid'));
     }
+
+    public function payement(Request $request)
+    {
+        $hotelid = $request->input('hotelid')? $request->input('hotelid'): 1;
+
+        return view('pages/payement', compact('hotelid'));
+    }
 }

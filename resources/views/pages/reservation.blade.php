@@ -229,7 +229,7 @@
                                                     </div>
 
                                                     <div class="hotel_btn_reserver  flex w-full items-end" style="flex: 1">
-                                                        <a href="{{ route('reservation', ['hotid' => $hotelid]) }}"
+                                                        <a href="{{ route('payement', ['hotid' => $hotelid]) }}"
                                                             class="btn w-full bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">
                                                             reserver
                                                         </a>

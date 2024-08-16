@@ -14,3 +14,5 @@ Route::get(
 )->name('hotel-search');
 Route::get('/reservation',
     [HotelController::class, 'reservation'])->name('reservation');
+
+Route::get('/payement',[HotelController::class, 'payement'])->name('payement');
