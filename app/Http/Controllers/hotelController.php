@@ -13,8 +13,9 @@ class hotelController extends Controller
 {
     public function index(Request $request): View
     {
-        $hotels = Hotel::all();
-        $destination = $request->input('destination') ? $request->input('destination') : 'paris';
+        $data = Hotel::with('image_hotels')->get();
+        $hotels = Hotel::with('image_hotels')->get();
+        $destination = $request->input('destination') ?? 'paris';
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
         $adults = $request->input('adults');

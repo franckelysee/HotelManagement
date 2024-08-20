@@ -285,7 +285,7 @@
         <section class="hotel_confirmed_info  w-[30%] ">
             <div class="w-full p-3 border-2 sticky top-[10%]">
                 <div class="w-full bg-gray-100 py-2  px-3">
-                    <div class=" border  w-full relative">
+                    <div class="main_image_container border  w-full relative">
                         <div class="hotel_images_container w-full overflow-auto">
                             <div class="image_list">
                                 <img class="images_item active w-full h-[250px]" src="{{ asset('images/hotels/hotel2.png') }}" alt="">
