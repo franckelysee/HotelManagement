@@ -1,0 +1,171 @@
+models:
+
+  ImageHotel:
+    hotel_id: foreignId:hotels
+    image_path: string
+    description: string
+    timestamps: longinterger
+
+  ImageChambre:
+    chambre_id: foreignId:chambres
+    image_path: string
+    description: string
+    timestamps: longinterger
+
+  ÉquipementChambre:
+    chambre_id: foreignId:chambres
+    nom_de_l_équipement: string
+    description: string
+    timestamps: true
+
+  Reservation:
+    hotel_id: foreignId:hotels
+    chambre_id: foreignId:chambres
+    client_id: foreignId:Client
+    date_d_arrivee: datetime
+    date_de_depart: datetime
+    prix_total: decimal(10,2)
+    statut: enum:en_attente,confirmé,annulé,enregistré,parti
+    timestamps: true
+
+  Client:
+    prenom: string
+    nom: string
+    email: string
+    telephone: string
+    adresse: string
+    ville: string
+    etat: string
+    pays: string
+    code_postal: string
+    timestamps: longinterger
+    relationships:
+      hasMany: Reservation
+
+  Paiement:
+    reservation_id: foreignId:Reservation
+    methode_de_paiement: enum:carte_de_crédit,paypal,virement_bancaire,espèces
+    statut_du_paiement: enum:en_attente,complété,échoué,remboursé
+    montant: decimal(10,2)
+    date_du_paiement: datetime
+    timestamps: longinterger
+
+  Avis:
+    hotel_id: foreignId:hotels
+    client_id: foreignId:Client
+    note: integer
+    commentaire: string
+    timestamps: longinterger
+
+controllers:
+  hotelController:
+    index:
+      query: all:hotels
+      render: hotels.index with:hotels
+    show:
+      find: hotel.id
+      render: hotels.show with:hotel
+    create:
+      render: hotels.create
+    store:
+      validate: nom, adresse, ville, etat, pays, code_postal, telephone, email, description, note, equipements
+      save: hotel
+      redirect: hotels.index
+    edit:
+      find: hotel.id
+      render: hotels.edit with:hotel
+    update:
+      validate: nom, adresse, ville, etat, pays, code_postal, telephone, email, description, note, equipements
+      update: hotel
+      redirect: hotels.show
+    destroy:
+      find: hotel.id
+      delete: hotel
+      redirect: hotels.index
+
+  ChambreController:
+    index:
+      query: all:Chambres for:hotel.id
+      render: chambres.index with:chambres
+    show:
+      find: chambre.id
+      render: chambres.show with:chambre
+    create:
+      render: chambres.create
+    store:
+      validate: hotel_id, numero_de_chambre, type_de_chambre, prix_par_nuit, capacite, est_disponible, description
+      save: chambre
+      redirect: chambres.index
+    edit:
+      find: chambre.id
+      render: chambres.edit with:chambre
+    update:
+      validate: hotel_id, numero_de_chambre, type_de_chambre, prix_par_nuit, capacite, est_disponible, description
+      update: chambre
+      redirect: chambres.show
+    destroy:
+      find: chambre.id
+      delete: chambre
+      redirect: chambres.index
+
+  ReservationController:
+    index:
+      query: all:reservations for:hotel.id
+      render: reservations.index with:reservations
+    show:
+      find: reservation.id
+      render: reservations.show with:reservation
+    create:
+      render: reservations.create
+    store:
+      validate: hotel_id, chambre_id, client_id, date_d_arrivee, date_de_depart, prix_total, statut
+      save: reservation
+      redirect: reservations.index
+    edit:
+      find: reservation.id
+      render: reservations.edit with:reservation
+    update:
+      validate: hotel_id, chambre_id, client_id, date_d_arrivee, date_de_depart, prix_total, statut
+      update: reservation
+      redirect: reservations.show
+    destroy:
+      find: reservation.id
+      delete: reservation
+      redirect: reservations.index
+
+  ClientController:
+    index:
+      query: all:client
+      render: client.index with:client
+    show:
+      find: client.id
+      render: client.show with:client
+    create:
+      render: client.create
+    store:
+      validate: prenom, nom, email, telephone, adresse, ville, etat, pays, code_postal
+      save: client
+      redirect: client.index
+    edit:
+      find: client.id
+      render: client.edit with:client
+    update:
+      validate: prenom, nom, email, telephone, adresse, ville, etat, pays, code_postal
+      update: client
+      redirect: client.show
+    destroy:
+      find: client.id
+      delete: client
+      redirect: client.index
+
+  PaiementController:
+    store:
+      validate: reservation_id, methode_de_paiement, statut_du_paiement, montant, date_du_paiement
+      save: paiement
+      redirect: reservations.show
+
+  AvisController:
+    store:
+      validate: hotel_id, client_id, note, commentaire
+      save: avis
+      redirect: hotels.show

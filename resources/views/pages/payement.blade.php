@@ -1,12 +1,14 @@
 @extends('app')
 
-
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/payement.css') }}">
+@endsection
 @section('content')
 <div class="w-full bg-white">
     <div class="hotel_name px-8 py-2">
         <div class="name text-[34px] font-serif uppercase font-bold">Revier Hotel - Dubai</div>
     </div>
-    <div class="w-full flex">
+    <div class="w-full flex gap-1">
         <section class="content_information_steps py-2 w-[70%]">
             <form action="" method="get" class="flex flex-col gap-5">
                 @csrf
@@ -280,12 +282,91 @@
             </form>
         </section>
 
-        <section class="hotel_confirmed_info p-3 ">
-            <div class="w-full px-3 py-2 border-2 ">
-                <div class="name text-[34px] font-serif uppercase font-bold">Comming Soon</div>
+        <section class="hotel_confirmed_info  w-[30%] ">
+            <div class="w-full p-3 border-2 sticky top-[10%]">
+                <div class="w-full bg-gray-100 py-2  px-3">
+                    <div class=" border  w-full relative">
+                        <div class="hotel_images_container w-full overflow-auto">
+                            <div class="image_list">
+                                <img class="images_item active w-full h-[250px]" src="{{ asset('images/hotels/hotel2.png') }}" alt="">
+                                <img class="images_item w-full h-[250px]" src="{{ asset('images/hotels/chambre2.png') }}" alt="">
+                                <img class="images_item w-full h-[250px]" src="{{ asset('images/hotels/chambre3.png') }}" alt="">
+                                <img class="images_item w-full h-[250px]" src="{{ asset('images/hotels/chambre4.png') }}" alt="">
+                                <img class="images_item w-full h-[250px]" src="{{ asset('images/hotels/chambre5.png') }}" alt="">
+                            </div>
+                        </div>
+
+                        <div class="left_arrow_right_arrow absolute top-1/2 -translate-y-1/2  w-full flex justify-between items-center">
+                            <div class="left border bg-gray-400 p-1 text-white cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                    <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="right  border bg-gray-400 p-1 text-white cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                    <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel_personal_info w-full">
+                        <div class="w-full py-3">
+                            <span class="text-[18px] font-medium">Rivier Hotel - Dubai</span>
+                            <span class="short_description line-clamp-2 text-[14px] text-[#666]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus excepturi enim eum, eos quia animi est esse repellendus illum, dolores laborum. Sunt aliquid non beatae ea sapiente facilis at animi?</span>
+                        </div>
+
+                        <div class="w-full">
+                            <div class="w-full py-3 border bg-white rounded-[10px] text-[14px] flex flex-col gap-1 px-2">
+                                <div class="date_arrivee flex gap-5">
+                                    <span > Arrivée</span>
+                                    <span class="font-bold"> Vendredi 23 août 2024 <samp class="font-normal">(15 h 00)</samp></span>
+                                </div>
+                                <div class="date_depart flex gap-5">
+                                    <span > Départ</span>
+                                    <span class="font-bold">dimanche 25 août 2024<samp class="font-normal">(12 h 00)</samp></span>
+                                </div>
+                                <div class="nombre_jours border rounded-[5px] border-gray-300 w-[max-content] ">
+                                    <span class="p-1"> 2 nuits, 1 chambres</samp></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full px-3 py-2">
+                    <div class="w-full">
+                        <span class="text-[18px] font-medium">Tarifs</span>
+                        <div class="w-full py-3 border bg-white rounded-[10px] text-[14px] flex flex-col gap-1 px-2">
+                            <div class="flex justify-between border-b py-2">
+                                <span class="font-medium">Prix par nuit</span>
+                                <span class="font-medium"> 68,44 €</span>
+                            </div>
+                            <div class="flex justify-between py-2">
+                                <span class="font-medium text-blue-600">2 nuits, 1 chambre</span>
+                                <span class="font-medium"> 111,74 €</span>
+                            </div>
+                            <div class="flex justify-between py-2">
+                                <span class="font-medium">Taxes et frais </span>
+                                <span class="font-medium"> 25,13 €</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-t">
+                                <span class="font-bold ">Montant Total </span>
+                                <span class="font-bold text-[20px]"> 136,87 €</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </section>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script type="module" src="{{ asset('js/hotels/payement.js') }}"></script>
+
 @endsection

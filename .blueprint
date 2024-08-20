@@ -1,0 +1,19 @@
+created:
+    - database/factories/ImageHotelFactory.php
+    - database/factories/ImageChambreFactory.php
+    - database/migrations/2024_08_20_130646_create_image_hotels_table.php
+    - database/migrations/2024_08_20_130647_create_image_chambres_table.php
+    - app/Models/ImageHotel.php
+    - app/Models/ImageChambre.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    Hotel: { nom: string, adresse: string, ville: string, etat: string, pays: string, code_postal: string, telephone: string, email: string, description: string, note: integer, equipements: json, timestamps: longinterger, relationships: { hasMany: 'Chambre, Reservation' } }
+    Chambre: { hotel_id: 'foreignId:hotels', numero_de_chambre: string, type_de_chambre: 'enum:standard,deluxe,suite', prix_par_nuit: 'decimal(8,2)', capacite: integer, est_disponible: boolean, description: string, timestamps: longinterger, relationships: { hasMany: 'Reservation, ÉquipementChambre' } }
+    Image: { path: string, alt_text: string, imageable: morph }
+    ÉquipementChambre: { chambre_id: 'foreignId:chambres', nom_de_l_équipement: string, description: string, timestamps: timestamps }
+    Reservation: { hotel_id: 'foreignId:hotels', chambre_id: 'foreignId:chambres', client_id: 'foreignId:Client', date_d_arrivee: datetime, date_de_depart: datetime, prix_total: 'decimal(10,2)', statut: 'enum:en_attente,confirmé,annulé,enregistré,parti', timestamps: timestamps }
+    Client: { prenom: string, nom: string, email: string, telephone: string, adresse: string, ville: string, etat: string, pays: string, code_postal: string, timestamps: longinterger, relationships: { hasMany: Reservation } }
+    Paiement: { reservation_id: 'foreignId:Reservation', methode_de_paiement: 'enum:carte_de_crédit,paypal,virement_bancaire,espèces', statut_du_paiement: 'enum:en_attente,complété,échoué,remboursé', montant: 'decimal(10,2)', date_du_paiement: datetime, timestamps: longinterger }
+    Avis: { hotel_id: 'foreignId:hotels', client_id: 'foreignId:Client', note: integer, commentaire: string, timestamps: longinterger }
+    ImageHotel: { hotel_id: 'foreignId:hotels', image_path: string, description: string, timestamps: longinterger }
+    ImageChambre: { chambre_id: 'foreignId:chambres', image_path: string, description: string, timestamps: longinterger }

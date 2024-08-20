@@ -15,7 +15,7 @@
                             Réservez dès maintenant et profitez de nos offres exclusives ! Découvrez le confort et le luxe de nos chambres, ainsi que les services exceptionnels que nous offrons à nos invités. Cliquez sur le bouton ci-dessous pour garantir votre séjour de rêve.
                         </p>
 
-                        <a href="{{ route('hotels') }}" class="btn bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">Réserver Dès Maintenant</a>
+                        <a href="{{ route('hotels.index') }}" class="btn bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">Réserver Dès Maintenant</a>
                     </div>
 
                 </div>

@@ -1,0 +1,20 @@
+
+
+.hotel_images_container{
+    display: block;
+    overflow: auto;
+
+}
+.image_list{
+    display: flex;
+    width: max-content;
+}
+.images_item
+{
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.images_item.active
+{
+    opacity: 1;
+}
