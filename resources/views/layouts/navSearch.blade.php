@@ -6,7 +6,11 @@
                 <div class="w-full flex gap-4 items-center">
                     <div class="w-[50%]  flex flex-col gap-2">
                         <label for="searchDestination" class="font-bold">Destination ? <span class="font-normal text-[#FF2D20]">(Obligatoire)</span></label>
-                        <input class="border border-black py-2 px-2 outline-none" type="text" name="searchDestination" id="searchDestination" placeholder="Rechercher une destination" required>
+                        @if (isset($ville))
+                        <input class="border border-black py-2 px-2 outline-none" type="text" name="searchDestination" id="searchDestination" value="{{ $ville }}" placeholder="Rechercher une destination" required>
+                        @else
+                        <input class="border border-black py-2 px-2 outline-none" type="text" name="searchDestination" id="searchDestination"  placeholder="Rechercher une destination" required>
+                        @endif
                     </div>
                     <!-- dates -->
                     <div class="w-full flex flex-col gap-2">

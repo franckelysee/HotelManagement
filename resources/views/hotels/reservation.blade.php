@@ -13,13 +13,14 @@
                 <div class="hotel_imagebanner w-full">
                     <div class="image_container w-full flex gap-1 h-[300px] ">
                         <div class="main_image w-[50%] border">
-                            <img class="w-full h-full" src="{{ asset('images/hotels/hotel2.png') }}" alt="">
+                            <img class="w-full h-full" src="{{ asset('storage/'.$hotel->image_hotels[0]->image_path) }}" alt="">
                         </div>
                         <div class="additionnal_images flex flex-wrap w-[50%] gap-1 h-full  ">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre2.png') }}" alt="">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre3.png') }}" alt="">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre4.png') }}" alt="">
-                            <img class="w-[48%] h-[49%]" src="{{ asset('images/hotels/chambre5.png') }}" alt="">
+                            @foreach ($chambres as $chambre)
+                            @foreach ($chambre->imageChambres->slice(0,4) as $image)
+                            <img class="w-[{{100/count($hotel->image_hotels) -2}}%] h-[{{100/count($hotel->image_hotels)-1}}%]" src="{{ asset('storage/'.$image->image_path) }}" alt="">
+                            @endforeach
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -178,7 +179,7 @@
                                                 <div class="images_container w-full  " style="flex: 1">
                                                     <div class="images_list flex ">
                                                         <div class="image_item w-full">
-                                                            <img class="rounded-t-[20px] w-full" src="{{ asset('images/hotels/chambre' . (string)($i+1) .'.png') }}" alt="">
+                                                            <img class="rounded-t-[20px] w-full" src="{{ asset('storage/'.$hotel->image) }}" alt="">
                                                         </div>
                                                         <div class="image_item hidden">
                                                             <img src="{{ asset('images/hotels/hotel1.png') }}" alt="">
@@ -229,7 +230,7 @@
                                                     </div>
 
                                                     <div class="hotel_btn_reserver  flex w-full items-end" style="flex: 1">
-                                                        <a href="{{ route('payement', ['hotid' => $hotelid]) }}"
+                                                        <a href="{{ route('payement', ['hotid' => $hotel->id]) }}"
                                                             class="btn w-full bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">
                                                             reserver
                                                         </a>

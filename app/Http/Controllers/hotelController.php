@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\hotelStoreRequest;
 use App\Http\Requests\hotelUpdateRequest;
+use App\Models\Chambre;
 use App\Models\Hotel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,13 +25,23 @@ class hotelController extends Controller
         return view('hotels.index', compact('hotels', 'destination', 'start_date', 'end_date', 'adults', 'children', 'regionId'));
     }
 
-    public function show(Request $request, hotel $hotel): View
+    public function show(Request $request): View
     {
-        $hotel = Hotel::find($request->id);
 
-        return view('hotels.show', compact('hotel'));
+        $ville = $request->ville ;
+        $hotels = Hotel::with('image_hotels')->where('ville', $ville)->get();
+        // dd($hotels);
+
+        return view('hotels.show', compact('hotels', 'ville'));
     }
-
+    public function reservation(Request $request)
+    {
+        $hotelid = $request->id;
+        $hotel = Hotel::with('image_hotels')->find($request->id);
+        $chambres = Chambre::with('imageChambres')->where('hotel_id', $hotelid)->get();
+        // dd($chambres[0]->imageChambres[0]->image_path);
+        return view('hotels.reservation', compact('hotel', 'hotelid', 'chambres'));
+    }
     public function create(Request $request): View
     {
         return view('hotels.create');

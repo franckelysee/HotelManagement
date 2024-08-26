@@ -43,7 +43,7 @@ export function ToogleImages() {
             }
 
             // Scroll to the active image
-            activeImage.scrollIntoView({ behavior: "smooth", block: "center" });
+            // activeImage.scrollIntoView({ behavior: "smooth", block: "center" });
         });
 
     }

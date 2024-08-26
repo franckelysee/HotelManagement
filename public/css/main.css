@@ -3,6 +3,13 @@ main{
     margin: 0 auto;
     padding: 10px;
 }
+.images_item{
+    display: none;
+}
+.images_item.active
+{
+    display: block;
+}
 
 @media (min-width: 1300px) {
 
