@@ -12,8 +12,6 @@ Route::get('/', function () {
 Route::get('/hotels', [HotelController::class, 'hotels'])->name('hotels');
 
 
-Route::get('/payement',[HotelController::class, 'payement'])->name('payement');
-
 
 Route::resource('hotels', App\Http\Controllers\hotelController::class);
 Route::get('/hotels/search-hotels', [App\Http\Controllers\hotelController::class, 'show'])->name('search-hotels');
@@ -45,6 +43,9 @@ Route::middleware('auth')->group(function () {
         '/reservation/{hotelname}',
         [ControllersHotelController::class, 'reservation']
     )->name('reservation');
+    Route::get('/payement', [HotelController::class, 'payement'])->name('payement');
+
+
 
 });
 
