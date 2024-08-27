@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="/">
                         <span class="text-[#FF2D20] uppercase font-serif text-[24px]">Hotels</span>
                     </a>
                 </div>

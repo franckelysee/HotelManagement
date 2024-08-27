@@ -13,7 +13,7 @@
 </head>
 <body class="relative">
 
-    <div class="header w-full  sticky top-0 z-10">
+    <div class="header w-full  sticky  top-0 z-10">
         {{-- @include('layouts.header') --}}
         @include('layouts.navigation')
 
@@ -24,6 +24,8 @@
 
 
     <script src="{{ asset('js/datepicker/flowbite/dist/flowbite.min.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script> --}}
+
 
 </body>
 </html>

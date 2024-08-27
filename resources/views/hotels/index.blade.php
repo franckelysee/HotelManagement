@@ -7,7 +7,7 @@
 
             <div class="w-full py-5">
                 <div class="container_mgs h-[500px] w-full border rounded-[30px] flex ">
-                    <div class="msg_content bg-[#44444463] w-[35%] p-4 rounded-[30px] font-sans flex flex-col gap-3">
+                    <div class="msg_content  bg-[#44444463] w-[35%] p-4 rounded-[30px] font-sans flex flex-col gap-3">
                         <h1 class="text-[50px] font-bold text-white">Prêt à vivre une expérience inoubliable ?</h1>
                     </div>
                 </div>
