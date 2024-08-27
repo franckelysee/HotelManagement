@@ -34,13 +34,12 @@ class hotelController extends Controller
 
         return view('hotels.show', compact('hotels', 'ville'));
     }
-    public function reservation(Request $request)
+    public function reservation(Request $request, $hotelname)
     {
-        $hotelid = $request->id;
-        $hotel = Hotel::with('image_hotels')->find($request->id);
-        $chambres = Chambre::with('imageChambres')->where('hotel_id', $hotelid)->get();
+        $hotel = Hotel::with('image_hotels')->where("nom", $hotelname)->first();
+        $chambres = Chambre::with('imageChambres')->where('hotel_id', $hotel->id)->get();
         // dd($chambres[0]->imageChambres[0]->image_path);
-        return view('hotels.reservation', compact('hotel', 'hotelid', 'chambres'));
+        return view('hotels.reservation', compact('hotel', 'chambres'));
     }
     public function create(Request $request): View
     {

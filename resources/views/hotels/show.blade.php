@@ -8,7 +8,7 @@
 
 <div class="w-full">
     <div class="w-full">
-        @include('layouts.navSearch', ['ville' => $ville])
+        @include('layouts.navSearch', ['destination' => $ville])
     </div>
     <div class="w-full py-5 flex gap-8 relative">
         <aside class="w-[20%]">
@@ -77,9 +77,8 @@
                     @if (isset($hotels))
                         @foreach ($hotels as $hotel )
                         <div class="hotel_item w-[33%] " >
-                            <form action=" {{ route('reservation') }}" method="GET">
-                                @method('GET')
-                                @csrf
+                            <form action=" {{ route('reservation',['hotelname' => $hotel->nom]) }}" method="get">
+
                                 <div>
                                     <input type="text" name="id" value="{{ $hotel->id }}" id="" hidden>
                                 </div>
@@ -126,7 +125,7 @@
                                             </div>
                                             <span class="text-[14px] capitalize">taxe et frais compris</span>
                                         </div>
-
+                                        @csrf
                                         <div class="hotel_btn_reserver w-full flex items-end justify-end text-[12px]">
                                             <button class="btn bg-blue-700 text-white py-2 px-2 rounded-[10px] flex justify-center items-center">Reserver une Chambre</button>
                                         </div>

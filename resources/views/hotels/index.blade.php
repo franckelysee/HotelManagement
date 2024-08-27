@@ -22,8 +22,7 @@
                         @foreach ($hotels as $hotel )
                         <div class="hotel_item w-[33%] " >
                             <form action=" {{ route('search-hotels') }}" method="get">
-                                @method('get')
-                                @csrf
+
                                 <div>
                                     <input type="text" name="ville" value="{{ $hotel->ville }}" id="" hidden>
                                 </div>
@@ -70,7 +69,7 @@
                                             </div>
                                             <span class="text-[14px] capitalize">taxe et frais compris</span>
                                         </div>
-
+                                        @csrf
                                         <div class="hotel_btn_reserver w-full flex items-e">
                                             <button class="btn bg-blue-700 text-white py-3 px-2 rounded-[10px] flex justify-center items-center">Parcourir</button>
                                         </div>

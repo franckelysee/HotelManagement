@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     @yield('styles')
-    @vite("resources/css/app.css")
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="relative">
 
     <div class="header w-full  sticky top-0 z-10">
-        @include('layouts.header')
+        {{-- @include('layouts.header') --}}
+        @include('layouts.navigation')
+
     </div>
     <main class=" m-auto ">
         @yield('content')

@@ -6,7 +6,7 @@
 @endsection
 @section('content')
     <div class="w-full">
-        @include('layouts.navSearch')
+        @include('layouts.navSearch', ['destination' => $hotel->nom])
 
         <div class="w-full">
             <div class="w-full py-5">
@@ -18,7 +18,7 @@
                         <div class="additionnal_images flex flex-wrap w-[50%] gap-1 h-full  ">
                             @foreach ($chambres as $chambre)
                             @foreach ($chambre->imageChambres->slice(0,4) as $image)
-                            <img class="w-[{{100/count($hotel->image_hotels) -2}}%] h-[{{100/count($hotel->image_hotels)-1}}%]" src="{{ asset('storage/'.$image->image_path) }}" alt="">
+                            <img class="" src="{{ asset('storage/'.$image->image_path) }}" alt="" style="height: {{100/count($hotel->image_hotels) - 1}}%; width:{{100/count($hotel->image_hotels) -2}}%;">
                             @endforeach
                             @endforeach
                         </div>
@@ -49,11 +49,8 @@
                                         <span class="hotel_type_hote"> Hôtel Professionnel</span>
                                     </div>
                                     <div class="w-full">
-                                        <div class="name text-[34px] font-serif uppercase font-bold">Revier Hotel - Dubai</div>
+                                        <div class="name text-[34px] font-serif uppercase font-bold">{{ $hotel->nom }}</div>
                                         <div class="stars flex">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#141414" class="size-4">
-                                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
-                                            </svg>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#141414" class="size-4">
                                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                             </svg>
@@ -65,11 +62,22 @@
                                             </svg>
                                         </div>
                                         <div class="descript text-[#6f6f6f]">
-                                            <span>Hôtel chic avec une piscine extérieure - Canal de Dubaï à 0,5 km</span>
+                                            <span>{{ $hotel->description }}</span>
                                         </div>
                                         <div class="avis flex items-center gap-2">
-                                            <span class="avis_number bg-[#2431ac] text-white p-1 rounded-[5px]">8.8</span>
-                                            <span class="mention_avis text-[rgb(16,76,151)] ">Excellent</span>
+                                            <span class="avis_number bg-[#2431ac] text-white p-1 rounded-[5px]">{{ $hotel->note }} /10</span>
+                                            <span class="mention_avis text-[rgb(16,76,151)] ">
+                                                @if ($hotel->avis <=4)
+                                                Mauvais
+                                                @elseif ($hotel->avis >=5 && $hotel->avis <7)
+                                                Bien
+                                                @elseif ($hotel->avis >=7 && $hotel->avis <9)
+                                                Bon
+                                                @else
+                                                Excellent
+                                                @endif
+
+                                            </span>
                                         </div>
                                         <div class="w-full">
                                             <div class="show_avis">
@@ -173,22 +181,27 @@
                                     </div>
 
                                     <div class="w-full  flex flex-wrap">
-                                        @for ($i = 0; $i < 5; $i++)
+                                        @foreach ( $chambres as $chambre  )
                                         <div class="hotel_item w-[33%]  flex flex-col p-5 " >
                                             <div class="w-full border rounded-[20px] flex flex-col h-full">
-                                                <div class="images_container w-full  " style="flex: 1">
-                                                    <div class="images_list flex ">
-                                                        <div class="image_item w-full">
-                                                            <img class="rounded-t-[20px] w-full" src="{{ asset('storage/'.$hotel->image) }}" alt="">
+                                                <div class="main_image_container w-full relative">
+                                                    <div class="hotel_images_container w-full overflow-auto">
+                                                        <div class="image_list flex w-full">
+                                                            @foreach ($chambre->imageChambres as $image)
+                                                                <img class="images_item {{ $loop->first ? 'active' : 'hidden' }} rounded-t-[20px] px-1 w-full h-[250px]" src="{{ asset('storage/'.$image->image_path) }}" alt="">
+                                                            @endforeach
                                                         </div>
-                                                        <div class="image_item hidden">
-                                                            <img src="{{ asset('images/hotels/hotel1.png') }}" alt="">
+                                                    </div>
+                                                    <div class="left_arrow_right_arrow absolute top-1/2 -translate-y-1/2  w-full flex justify-between items-center">
+                                                        <div class="left border bg-gray-400 p-1 text-white cursor-pointer">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                                                <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+                                                            </svg>
                                                         </div>
-                                                        <div class="image_item hidden">
-                                                            <img src="{{ asset('images/hotels/hotel1.png') }}" alt="">
-                                                        </div>
-                                                        <div class="image_item hidden">
-                                                            <img src="{{ asset('images/hotels/hotel1.png') }}" alt="">
+                                                        <div class="right  border bg-gray-400 p-1 text-white cursor-pointer">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                                                <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                                                            </svg>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -199,8 +212,7 @@
                                                     </div>
                                                     <div class="hotel_name ">
                                                         <a href="#" class="flex flex-col">
-                                                            <span class="text-[18px] font-medium">Dormero Hotel Frankfurt Messe </span>
-                                                            <span class="text-[14px]">Francfort</span>
+                                                            <span class="text-[18px] font-medium">Chambre {{ $chambre->type_de_chambre }} </span>
                                                         </a>
                                                     </div>
                                                     <div class="liste_equipement_service w-full py-3 text-[13px] text-[#2958f1e5] cursor-pointer">
@@ -210,7 +222,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="hotel_details_link cursor-pointer w-[max-content] flex flex-col">
-                                                        @if ($i%2 == 0)
+                                                        @if ($loop->iteration %2 == 0)
                                                         <span class="text-[14px] text-[#13661e]">
                                                             Entierement Remboursable
                                                         </span>
@@ -223,7 +235,7 @@
                                                     </div>
                                                     <div class="hotel_price flex justify-between items-center">
                                                         <div>
-                                                            <span class="text-[20px] text-[#273add] font-medium " style="letter-spacing: 2px;">500€</span>
+                                                            <span class="text-[20px] text-[#273add] font-medium " style="letter-spacing: 2px;">{{ $chambre->prix_par_nuit }}Fcfa</span>
                                                             <span class="text-[12px] font-bold">/ par nuit</span>
                                                         </div>
                                                         <span class="text-[14px] capitalize">taxe et frais compris</span>
@@ -238,7 +250,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endfor
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -248,4 +260,8 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script type="module" src="{{ asset('js/hotels/hotels.js') }}"></script>
+
 @endsection
